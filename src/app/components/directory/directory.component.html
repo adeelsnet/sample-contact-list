@@ -1,0 +1,12 @@
+<div class="jumbotron">
+    <h1 class="display-3">Contacts!</h1>
+    <p class="lead">Please Enter Required information.</p>
+    <app-contact-form></app-contact-form>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-4" *ngFor="let contact of contactService.contacts">
+            <app-contact [contactInput]="contact"></app-contact>
+        </div>
+
+    </div>
+</div>

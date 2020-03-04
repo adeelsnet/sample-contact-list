@@ -1,0 +1,50 @@
+<form class="example-form" (submit)="onSubmit()">
+    <!-- <form class="example-form" (submit)="onSubmit()"> -->
+    <div class="row">
+        <div class="col-md-3">
+            <mat-form-field appearance="outline">
+                <!--[ngStyle]="{'width': '500px'}"-->
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="enter last name" [formControl]="value" required [(ngModel)]='lName'>
+                <mat-error *ngIf="value.invalid">{{getInputErrorMessage()}}</mat-error>
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="enter first name" [formControl]="value" required [(ngModel)]='fName'>
+                <mat-error *ngIf="value.invalid">{{getInputErrorMessage()}}</mat-error>
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="row"> -->
+        <div class="col-md-3">
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="enter phone numner" [formControl]="value" required [(ngModel)]='telNum'>
+                <mat-error *ngIf="value.invalid">{{getInputErrorMessage()}}</mat-error>
+                <mat-icon matSuffix>phone_enabled</mat-icon>
+                <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required [(ngModel)]='contactEmail'>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary btn-lg">ADD CONTACT</button>
+        </div>
+    </div>
+</form>
