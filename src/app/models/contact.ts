@@ -4,4 +4,5 @@ export interface Contact {
   lName: String;
   telNum: number;
   email: String;
+  date: Date;
 }

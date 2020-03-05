@@ -11,18 +11,20 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ContactFormComponent implements OnInit {
 
-  lName: string;
-  fName: string;
-  telNum: number;
-  contactEmail: string;
-
-  constructor(public contactService: ContactService, private toasterService: ToastrService) { }
+  fName: string ='';
+  lName: string ='';
+  telNum: number = null;
+  contactEmail: string ='';
+  dateAdded = new Date();
+  constructor(public contactService: ContactService, private toasterService: ToastrService) {}
 
   ngOnInit(): void {
   }
 
   email = new FormControl('', [Validators.required, Validators.email]);
-  value = new FormControl('', [Validators.required]);
+  fname = new FormControl('', [Validators.required]);
+  lname = new FormControl('', [Validators.required]);
+  telnum = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -33,7 +35,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   getInputErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.fname.hasError('required') || this.lname.hasError('required') || this.telnum.hasError('required')) {
       return 'You must enter a value';
     }
   }
@@ -47,9 +49,14 @@ export class ContactFormComponent implements OnInit {
       lName: this.lName,
       telNum: this.telNum,
       email: this.contactEmail,
+      date: new Date()
     }
     // console.log(newContact);
     this.toasterService.success(`Contact Added Successfully.`)
     this.contactService.contacts.unshift(newContact);
+  }
+
+  addContactBtnEnable(){
+    return (this.fName==='' || this.lName==='' || this.telNum === null || this.contactEmail === '')? true : false
   }
 }

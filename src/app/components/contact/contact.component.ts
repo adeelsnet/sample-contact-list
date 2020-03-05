@@ -17,8 +17,8 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.contactService.contacts);
-    console.log(this.contactInput);
+    // console.log(this.contactService.contacts);
+    // console.log(this.contactInput);
 
   }
 

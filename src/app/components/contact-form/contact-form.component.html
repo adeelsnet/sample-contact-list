@@ -3,19 +3,19 @@
     <div class="row">
         <div class="col-md-3">
             <mat-form-field appearance="outline">
-                <!--[ngStyle]="{'width': '500px'}"-->
-                <mat-label>Last Name</mat-label>
-                <input matInput placeholder="enter last name" [formControl]="value" required [(ngModel)]='lName'>
-                <mat-error *ngIf="value.invalid">{{getInputErrorMessage()}}</mat-error>
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="enter first name" [formControl]="fname" [(ngModel)]='fName' required>
+                <mat-error *ngIf="fname.invalid">{{getInputErrorMessage()}}</mat-error>
                 <mat-icon matSuffix>perm_identity</mat-icon>
                 <!-- <mat-hint>Hint</mat-hint> -->
             </mat-form-field>
         </div>
         <div class="col-md-3">
             <mat-form-field appearance="outline">
-                <mat-label>First Name</mat-label>
-                <input matInput placeholder="enter first name" [formControl]="value" required [(ngModel)]='fName'>
-                <mat-error *ngIf="value.invalid">{{getInputErrorMessage()}}</mat-error>
+                <!--[ngStyle]="{'width': '500px'}"-->
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="enter last name" [formControl]="lname" [(ngModel)]='lName' required>
+                <mat-error *ngIf="lname.invalid">{{getInputErrorMessage()}}</mat-error>
                 <mat-icon matSuffix>perm_identity</mat-icon>
                 <!-- <mat-hint>Hint</mat-hint> -->
             </mat-form-field>
@@ -25,8 +25,8 @@
         <div class="col-md-3">
             <mat-form-field appearance="outline">
                 <mat-label>Phone Number</mat-label>
-                <input matInput placeholder="enter phone numner" [formControl]="value" required [(ngModel)]='telNum'>
-                <mat-error *ngIf="value.invalid">{{getInputErrorMessage()}}</mat-error>
+                <input matInput placeholder="enter phone numner" [formControl]="telnum" [(ngModel)]='telNum' required>
+                <mat-error *ngIf="telnum.invalid">{{getInputErrorMessage()}}</mat-error>
                 <mat-icon matSuffix>phone_enabled</mat-icon>
                 <!-- <mat-hint>Hint</mat-hint> -->
             </mat-form-field>
@@ -34,7 +34,7 @@
         <div class="col-md-3">
             <mat-form-field appearance="outline">
                 <mat-label>Enter your email</mat-label>
-                <input matInput placeholder="pat@example.com" [formControl]="email" required [(ngModel)]='contactEmail'>
+                <input matInput placeholder="pat@example.com" [formControl]="email" [(ngModel)]='contactEmail' required>
                 <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
@@ -42,9 +42,25 @@
     </div>
     <div class="row">
         <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-3">
+                    <span class="lead" [hidden]="fName === ''">Name:</span> {{fName}} {{lName}}
+                </div>
+                <div class="col-md-3">
+                    <span class="lead" [hidden]="telNum === null">Phone:</span> {{telNum}}
+                </div>
+                <div class="col-md-3">
+                    <span class="lead" [hidden]="contactEmail === ''">Email:</span> {{contactEmail}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="lead" [hidden]="addContactBtnEnable()">Date: </span> <span [hidden]="addContactBtnEnable()">{{dateAdded | date}}</span>
+                </div>
+            </div>
         </div>
         <div class="col-md-3">
-            <button type="submit" class="btn btn-primary btn-lg">ADD CONTACT</button>
+            <button class="btn btn-primary btn-lg" [disabled]="addContactBtnEnable()">ADD CONTACT</button>
         </div>
     </div>
 </form>
